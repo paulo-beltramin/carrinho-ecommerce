@@ -1,21 +1,21 @@
 import { FaCartPlus } from "react-icons/fa"
+import { Link } from "react-router-dom"
 const Header = () => {
   return (
     <div>
       <header className=" p-2 bg-gray-500">
-        <div className=" flex justify-between items-center max-w-3xl w-full mx-auto">
+        <div className=" flex justify-between items-center max-w-7xl px-4 w-full mx-auto">
           <div className="flex  ">
-            <h1 className="text-3xl text-amber-400 font-extrabold">Paulão</h1>
-            <span className="text-3xl text-green-400 font-bold">Shopping</span>
+            <h1 className="text-3xl max-md:text-2xl text-amber-400 font-extrabold">Paulão</h1>
+            <span className="text-3xl max-md:text-2xl text-green-400 font-bold">Shopping</span>
           </div>
-          <p className="flex gap-1"><FaCartPlus size={28} color="yellow" />
-            <span className="font-extrabold text-2xl  px-1 -right-1.5 rounded-4xl">
-              <p className="bg-amber-500 px-1 rounded-lg ">
-                2
-              </p>
-            </span>
-          </p>
-
+          <Link to={'#'} className="relative">
+            <FaCartPlus size={28} color="yellow" />
+            <p className="absolute -right-2 -top-1.5 bg-red-600 rounded-full w-6 h-6 flex
+             justify-center text-white">
+              2
+            </p>
+          </Link>
         </div>
 
 
