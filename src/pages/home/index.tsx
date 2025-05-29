@@ -33,10 +33,10 @@ const Home = () => {
                 <h1 className="text-center mt-10 text-2xl md:text-3xl lg:text-3xl font-bold ">Produtos em destaque</h1>
 
 
-                <div className=" grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+                <div className=" grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3">
                     {products && products.map((item) => (
                         <>
-                            <div className="flex flex-col items-center gap-2 p-4" key={item.id}>
+                            <div className="flex flex-col items-center h-full  p-4" key={item.id}>
 
                                 <img src={item.cover} alt="" />
 
@@ -44,13 +44,9 @@ const Home = () => {
                                     {item.title}
                                 </p>
 
-                                <p className="text-base h-8/12">
-                                    {item.description}
-                                </p>
-
                                 <strong>R$ {item.price}</strong>
 
-                                <button className="bg-zinc-900 text-white py-1 rounded-lg px-4">Adicionar ao carrinho</button>
+                                <button className="bg-zinc-900 text-white py-1 rounded-lg px-4 mb-7">Adicionar ao carrinho</button>
 
                             </div>
                         </>

@@ -1,6 +1,12 @@
+import { useContext } from "react"
+
 import { FaCartPlus } from "react-icons/fa"
 import { Link } from "react-router-dom"
+import { cartContext } from "../Context/cartContext"
 const Header = () => {
+
+ const {cartAmount}= useContext(cartContext)
+
   return (
     <div>
       <header className=" p-2 bg-gray-500">
@@ -11,10 +17,12 @@ const Header = () => {
           </div>
           <Link to={'/carrinho'} className="relative">
             <FaCartPlus size={28} color="yellow" />
-            <p className="absolute -right-2 -top-1.5 bg-red-600 rounded-full w-6 h-6 flex
+           {cartAmount > 0 && (
+             <p className="absolute -right-2 -top-1.5 bg-red-600 rounded-full w-6 h-6 flex
              justify-center text-white">
-              2
+              {cartAmount}
             </p>
+           )}
           </Link>
         </div>
 
