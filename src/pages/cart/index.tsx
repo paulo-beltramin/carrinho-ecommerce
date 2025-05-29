@@ -4,7 +4,7 @@ import { cartContext } from "../../Components/Context/cartContext"
 
 const Cart = () => {
 
-  const { cart,total } = useContext(cartContext)
+  const { cart, total, addItem, removeItemCart } = useContext(cartContext)
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4">
@@ -27,7 +27,7 @@ const Cart = () => {
           </div>
 
           <div className="flex gap-4 items-center">
-            <button className="bg-zinc-600 px-4 rounded font-extrabold text-white cursor-pointer">
+            <button onClick={() => removeItemCart(item)} className="bg-zinc-600 px-4 rounded font-extrabold text-white cursor-pointer">
               -
             </button>
 
@@ -35,7 +35,7 @@ const Cart = () => {
               {item.amount}
             </p>
 
-            <button className="bg-zinc-600 px-4 rounded font-extrabold text-white cursor-pointer">
+            <button onClick={() => addItem(item)} className="bg-zinc-600 px-4 rounded font-extrabold text-white cursor-pointer">
               +
             </button>
           </div>

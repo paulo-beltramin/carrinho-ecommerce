@@ -65,7 +65,15 @@ export const CartProvider = ({ children }: childrenProvider) => {
         const itemIndex = cart.findIndex((item) => item.id === product.id)
 
         if (cart[itemIndex].amount > 1) {
+            const cartList = cart;
 
+            cartList[itemIndex].amount = cartList[itemIndex].amount - 1
+
+            cartList[itemIndex].subTotal = cartList[itemIndex].subTotal - cartList[itemIndex].price
+
+            setCart(cartList)
+            totalPrice(cartList)
+            return
         }
 
         const removeItem = cart.filter(item => item.id !== product.id)
