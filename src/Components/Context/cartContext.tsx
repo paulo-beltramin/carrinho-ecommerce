@@ -1,5 +1,6 @@
 import { createContext, useState, type ReactNode } from "react";
 import type { productsProps } from "../../pages/home";
+import toast from "react-hot-toast";
 
 type ContextProps = {
     cart: cartProps[],
@@ -32,7 +33,16 @@ export const CartProvider = ({ children }: childrenProvider) => {
     const [total, setTtotal] = useState('')
 
     const addItem = (items: productsProps) => {
+        toast("Adicionado com sucesso", {
+            style: {
+                color: 'white',
+                background: 'green',
+                marginTop: '40px',
+                fontWeight: "bold",
 
+
+            }
+        })
         let cartIndex = cart.findIndex(item => item.id === items.id)
 
         if (cartIndex !== -1) {
