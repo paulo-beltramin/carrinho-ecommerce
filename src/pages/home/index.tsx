@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react"
+import { useContext } from "react"
 
+import  cartContext from "../../Components/Context/cartContext"
 import { api } from "../../Components/Services/api"
 
 
-type productsProps = {
+export type productsProps = {
     id: number,
     cover: string,
     title: string,
@@ -14,7 +16,11 @@ type productsProps = {
 
 const Home = () => {
 
+
     const [products, setProducts] = useState<productsProps[]>([])
+
+    const { addItem } = useContext(cartContext)
+
 
 
     useEffect(() => {
@@ -27,6 +33,10 @@ const Home = () => {
         setProducts((await response).data)
     }
 
+    const handleAddItem = (items: productsProps) => {
+
+       addItem(items)
+    }
     return (
         <>
             <main className="w-full max-w-7xl mx-auto">
@@ -34,9 +44,9 @@ const Home = () => {
 
 
                 <div className=" grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3">
-                    {products && products.map((item) => (
-                        <>
-                            <div className="flex flex-col items-center h-full  p-4" key={item.id}>
+                    {products.map((item) => (
+                        <div key={item.id}>
+                            <div className="flex flex-col items-center h-full  p-4" >
 
                                 <img src={item.cover} alt="" />
 
@@ -46,10 +56,12 @@ const Home = () => {
 
                                 <strong>R$ {item.price}</strong>
 
-                                <button className="bg-zinc-900 text-white py-1 rounded-lg px-4 mb-7">Adicionar ao carrinho</button>
+                                <button className="bg-zinc-900 cursor-pointer text-white py-1 rounded-lg px-4 mb-7"
+                                    onClick={() => handleAddItem(item)}
+                                >Adicionar ao carrinho</button>
 
                             </div>
-                        </>
+                        </div>
                     ))}
                 </div>
 

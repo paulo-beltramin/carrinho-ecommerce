@@ -2,7 +2,7 @@ import { useContext } from "react"
 
 import { FaCartPlus } from "react-icons/fa"
 import { Link } from "react-router-dom"
-import { cartContext } from "../Context/cartContext"
+import cartContext  from "../Context/cartContext"
 const Header = () => {
 
  const {cartAmount}= useContext(cartContext)
