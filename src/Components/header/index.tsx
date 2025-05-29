@@ -2,7 +2,7 @@ import { useContext } from "react"
 
 import { FaCartPlus } from "react-icons/fa"
 import { Link } from "react-router-dom"
-import cartContext  from "../Context/cartContext"
+import {cartContext}  from "../Context/cartContext"
 const Header = () => {
 
  const {cartAmount}= useContext(cartContext)
@@ -11,10 +11,10 @@ const Header = () => {
     <div>
       <header className=" p-2 bg-gray-500">
         <div className=" flex justify-between items-center max-w-7xl px-4 w-full mx-auto">
-          <div className="flex  ">
+          <Link className="flex " to={'/'}>
             <h1 className="text-3xl max-md:text-2xl text-amber-400 font-extrabold">Paulão</h1>
             <span className="text-3xl max-md:text-2xl text-green-400 font-bold">Shopping</span>
-          </div>
+          </Link>
           <Link to={'/carrinho'} className="relative">
             <FaCartPlus size={28} color="yellow" />
            {cartAmount > 0 && (
