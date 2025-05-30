@@ -7,7 +7,8 @@ type ContextProps = {
     cartAmount: number,
     addItem: (items: productsProps) => void,
     total: string,
-    removeItemCart: (product: productsProps) => void
+    removeItemCart: (product: productsProps) => void,
+
 }
 
 type cartProps = {
@@ -112,7 +113,8 @@ export const CartProvider = ({ children }: childrenProvider) => {
             cartAmount: cart.length,
             addItem,
             total,
-            removeItemCart
+            removeItemCart,
+
         }}>
             {children}
         </cartContext.Provider>

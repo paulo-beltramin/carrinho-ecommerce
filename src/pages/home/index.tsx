@@ -1,8 +1,11 @@
-import { useState, useEffect } from "react"
-import { useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 
-import  {cartContext} from "../../Components/Context/cartContext"
+
+
+import { cartContext } from "../../Components/Context/cartContext"
 import { api } from "../../Components/Services/api"
+import { useNavigate } from "react-router-dom"
+
 
 
 export type productsProps = {
@@ -16,10 +19,9 @@ export type productsProps = {
 
 const Home = () => {
 
-
     const [products, setProducts] = useState<productsProps[]>([])
-
     const { addItem } = useContext(cartContext)
+    const navigate = useNavigate()
 
 
 
@@ -35,8 +37,16 @@ const Home = () => {
 
     const handleAddItem = (items: productsProps) => {
 
-       addItem(items)
+        addItem(items)
     }
+
+    const handleDetails = (id: number) => {
+        products.filter((item) => item.id === id)
+        navigate(`/details/${id}`)
+    }
+
+
+
     return (
         <>
             <main className="w-full max-w-7xl mx-auto">
@@ -48,7 +58,7 @@ const Home = () => {
                         <div key={item.id}>
                             <div className="flex flex-col items-center h-full  p-4" >
 
-                                <img src={item.cover} alt="" />
+                                <img src={item.cover} alt="imagem do produto" className="cursor-pointer" onClick={() => handleDetails(item.id)} />
 
                                 <p className="text-lg font-bold">
                                     {item.title}
